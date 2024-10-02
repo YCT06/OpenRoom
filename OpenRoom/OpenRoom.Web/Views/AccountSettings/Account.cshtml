@@ -1,0 +1,150 @@
+﻿@model AccountDataViewModel
+@{
+    Layout = "_LayoutCustomer";
+    ViewData["Title"] = "Account";
+    var accountModel = Model;
+}
+
+@section headSpace {
+    <partial name="_EmptyPartial" />
+}
+
+@section footer {
+    <partial name="_FooterPartial" />
+}
+
+@section phoneNav {
+    <partial name="_PhoneNavLoginPartial" />
+}
+
+<section class="container content-box">
+    <div class="web-title-box">
+        <h1>帳號</h1>
+        <div class="title-content">
+            <span class="personal-name">姓&名,</span>
+            <span class="e-mail">E-mail@gmail.com ·</span>
+            <a href="/Users/Show">前往個人資料</a>
+        </div>
+    </div>
+    <div class="phone-title-box">
+        <h1 class="phone-title">個人資料</h1>
+        <a href="/AccountSettings/UserProfile" class="phone-user-href hyperlink">
+            <div class="phone-user-box">
+                <div class="user-img">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocIJBfZikbXhMHlOt7QikO2KXpGN4DquCA1Prl1tNj-Pfg=s96-c" alt="">
+                </div>
+                <div class="personal-information">
+                    <div class="phone-personal-name ">名字</div>
+                    <p>顯示個人資料</p>
+                </div>
+                <div class="phone-icon-arrow"></div>
+            </div>
+        </a>
+        <hr>
+        <a href="#" class="hyperlink">
+            <div class="share-your-houses hyperlink">
+                <div class="share-houses-text">
+                    <h2>在 Airbnb 上分享你的房源</h2>
+                    <p>要設定房源並開始賺取收入非常簡單。</p>
+                </div>
+                <div class="share-houses-img">
+                    <i class="fa-solid fa-house fa-2x"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--內容設定-->
+    <div class="card-box">
+        @foreach (var card in accountModel.AccountCards)
+        {
+            @await Html.PartialAsync("_AccountPartial", card)
+        }
+    </div>
+    <!--以上是電腦版的內容以下是手機版的內容-->
+    <div class="phone-content">
+        <hr>
+        <div class="phone-item-box">
+            <div class="phone-item-title">出租</div>
+            <a href="/Hosting/Today" class="hyperlink">
+                <div class="phone-item">
+                    <div class="phone-card-icon">
+                        <i class="fa-solid fa-toggle-on"></i>
+                    </div>
+                    <div class="phone-item-text">
+                        <p>管理房源</p>
+                    </div>
+                    <div class="phone-icon-arrow"></div>
+                </div>
+            </a>
+        </div>
+        <div class="phone-item-box">
+            <div class="phone-item-title">支援</div>
+            <a href="#" class="hyperlink">
+                <div class="phone-item">
+                    <div class="phone-card-icon">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                    <div class="phone-item-text">
+                        <p>前往說明中心</p>
+                    </div>
+                    <div class="phone-icon-arrow"></div>
+                </div>
+            </a>
+            <a href="#" class="hyperlink">
+                <div class="phone-item">
+                    <div class="phone-card-icon">
+                        <i class="fa-solid fa-folder-plus"></i>
+                    </div>
+                    <div class="phone-item-text">
+                        <p>就安全問題尋求協助</p>
+                    </div>
+                    <div class="phone-icon-arrow"></div>
+                </div>
+            </a>
+            <a href="#" class="hyperlink">
+                <div class="phone-item">
+                    <div class="phone-card-icon">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+                    <div class="phone-item-text">
+                        <p>檢舉街區問題</p>
+                    </div>
+                    <div class="phone-icon-arrow"></div>
+                </div>
+            </a>
+            <a href="#" class="hyperlink">
+                <div class="phone-item">
+                    <div class="phone-card-icon">
+                        <i class="fa-brands fa-airbnb"></i>
+                    </div>
+                    <div class="phone-item-text">
+                        <p>使用 Airbnb 的方法</p>
+                    </div>
+                    <div class="phone-icon-arrow"></div>
+                </div>
+            </a>
+        </div>
+        <div class="phone-footer">
+            <div class="phone-footer-international-and-icon">
+                <i class="fa-solid fa-earth-americas"></i>
+                <a href="#" class="hyperlink hyperlink-hover language">繁體中文 (TW)</a>
+                <a href="#" class="hyperlink hyperlink-hover">$ TWD</a>
+            </div>
+            <div class="logout-Btn">
+                <button>登出</button>
+            </div>
+            <div class="Terms">
+                <a href="#">協助和支援</a>
+                <span class="phone-footer-copyright-point">·</span>
+                <a href="#">«服務條款»</a>
+                <span class="phone-footer-copyright-point">·</span>
+                <a href="#">«隱私權政策»</a>
+                <div class="phone-copyright">
+                    © 2024 Airbnb, Inc. 版權所有
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="~/css/AccountSettingsCSS/Account.css" />
